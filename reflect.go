@@ -8,7 +8,6 @@
 // allows for Go-compatible named attribute access, including accessing embedded
 // struct attributes and the ability to use  functions and struct tags to
 // customize field names.
-//
 package reflectx
 
 import (
@@ -390,7 +389,7 @@ QueueLoop:
 			if tq.pp == "" {
 				fi.Path = fi.Name
 			} else {
-				fi.Path = tq.pp + "." + fi.Name
+				fi.Path = tq.pp + "_" + fi.Name
 			}
 
 			// skip unexported fields
