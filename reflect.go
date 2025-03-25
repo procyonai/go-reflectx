@@ -222,7 +222,9 @@ func FieldByIndexes(v reflect.Value, indexes []int) reflect.Value {
 // going to be used for reading and not setting.
 func FieldByIndexesReadOnly(v reflect.Value, indexes []int) reflect.Value {
 	for _, i := range indexes {
-		v = reflect.Indirect(v).Field(i)
+		if reflect.Indirect(v).Kind() != reflect.Invalid {
+			v = reflect.Indirect(v).Field(i)
+		}
 	}
 	return v
 }
